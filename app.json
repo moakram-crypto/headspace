@@ -1,0 +1,31 @@
+{
+  "expo": {
+    "name": "Calm Path",
+    "slug": "calm-path",
+    "scheme": "calmpath",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "icon": "./src/assets/icon.png",
+    "splash": {
+      "backgroundColor": "#FBF4EC"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.calmpath.app"
+    },
+    "android": {
+      "package": "com.calmpath.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#FBF4EC"
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./src/assets/icon.png"
+    },
+    "plugins": ["expo-notifications"]
+  }
+}
