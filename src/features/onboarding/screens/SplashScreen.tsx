@@ -17,12 +17,27 @@ export function SplashScreen({ navigation }: Props) {
 
   return (
     <View style={[styles.wrap, { backgroundColor: theme.primary }]}>
-      <Text variant="h1" color="#FFFFFF">Calm Path</Text>
-      <Text color="#FFFFFF" style={{ marginTop: 8 }}>A calmer day starts here.</Text>
+      <View style={styles.logoCircle}>
+        <Text color="#F47B20" style={{ fontSize: 36, fontWeight: "800" }}>hs</Text>
+      </View>
+      <Text variant="h2" color="#FFFFFF" style={{ marginTop: 20, letterSpacing: -0.3 }}>
+        headspace
+      </Text>
+      <Text color="rgba(255,255,255,0.75)" style={{ marginTop: 8, fontSize: 15, letterSpacing: 0.2 }}>
+        Sleep, stress & anxiety relief
+      </Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   wrap: { flex: 1, alignItems: "center", justifyContent: "center" },
+  logoCircle: {
+    width: 88,
+    height: 88,
+    borderRadius: 44,
+    backgroundColor: "#FFFFFF",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });

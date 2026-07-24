@@ -55,12 +55,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     borderWidth: 1,
-    borderRadius: radii.md,
-    padding: spacing.sm,
-    marginBottom: spacing.sm,
+    borderRadius: radii.md,   // 16px
+    padding: spacing.md,      // 16px inner padding — Headspace list rows
+    marginBottom: spacing.sm, // 8px gap between rows
   },
-  indicatorWrap: { width: 18, alignItems: "center", marginRight: spacing.xs },
-  dot: { width: 18, height: 18, borderRadius: 9, alignItems: "center", justifyContent: "center" },
-  ring: { width: 16, height: 16, borderRadius: 8, borderWidth: 2 },
-  cover: { width: 44, height: 44, borderRadius: radii.sm },
+  indicatorWrap: { width: 20, alignItems: "center", marginRight: spacing.sm },
+  dot: { width: 20, height: 20, borderRadius: 10, alignItems: "center", justifyContent: "center" },
+  ring: { width: 18, height: 18, borderRadius: 9, borderWidth: 2 },
+  cover: { width: 56, height: 56, borderRadius: radii.sm },  // 56px thumb — Headspace list art
 });

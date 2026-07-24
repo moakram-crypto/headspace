@@ -8,9 +8,11 @@
     "userInterfaceStyle": "automatic",
     "icon": "./src/assets/icon.png",
     "splash": {
-      "backgroundColor": "#FBF4EC"
+      "backgroundColor": "#F5EEE6"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.calmpath.app"
@@ -18,14 +20,15 @@
     "android": {
       "package": "com.calmpath.app",
       "adaptiveIcon": {
-        "backgroundColor": "#FBF4EC"
+        "backgroundColor": "#F5EEE6"
       }
     },
     "web": {
       "bundler": "metro",
-      "output": "static",
       "favicon": "./src/assets/icon.png"
     },
-    "plugins": ["expo-notifications"]
+    "plugins": [
+      "expo-notifications"
+    ]
   }
 }

@@ -31,10 +31,12 @@ export function CategoryChip({
 
 const styles = StyleSheet.create({
   chip: {
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.lg,  // 24px — Headspace chips have generous horizontal padding
+    paddingVertical: spacing.sm,    // 8px vertical
     borderRadius: radii.pill,
     borderWidth: 1,
-    marginRight: spacing.sm,
+    marginRight: spacing.sm,        // 8px gap between chips
+    height: 36,                     // fixed chip height for consistent row alignment
+    justifyContent: "center",
   },
 });

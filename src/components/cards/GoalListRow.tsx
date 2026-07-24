@@ -24,7 +24,7 @@ export function GoalListRow({ option, selected, onPress }: Props) {
         { backgroundColor: selected ? theme.primary : theme.card, borderColor: selected ? theme.primary : theme.border },
       ]}
     >
-      <Text style={{ fontSize: 18 }}>{option.icon}</Text>
+      <Text style={{ fontSize: 20 }}>{option.icon}</Text>
       <Text
         variant="bodyBold"
         color={selected ? "#FFFFFF" : theme.textPrimary}
@@ -40,7 +40,7 @@ export function GoalListRow({ option, selected, onPress }: Props) {
             : { borderColor: theme.border },
         ]}
       >
-        {selected && <Text style={{ fontSize: 12, color: theme.primary }}>✓</Text>}
+        {selected && <Text style={{ fontSize: 13, color: theme.primary }}>✓</Text>}
       </View>
     </Pressable>
   );
@@ -51,15 +51,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     borderWidth: 1.5,
-    borderRadius: radii.pill,
-    paddingVertical: spacing.sm,
-    paddingHorizontal: spacing.md,
-    marginBottom: spacing.sm,
+    borderRadius: radii.lg,         // 24px — Headspace onboarding rows use large radius
+    paddingVertical: spacing.md,    // 16px vertical
+    paddingHorizontal: spacing.lg,  // 24px horizontal
+    marginBottom: spacing.sm,       // 8px gap
   },
   check: {
-    width: 22,
-    height: 22,
-    borderRadius: 11,
+    width: 24,
+    height: 24,
+    borderRadius: 12,
     borderWidth: 1.5,
     alignItems: "center",
     justifyContent: "center",

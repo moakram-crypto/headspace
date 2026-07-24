@@ -65,8 +65,8 @@ export function TodayScreen() {
           <Text muted>How are you feeling today?</Text>
         </View>
         <View style={{ flexDirection: "row", gap: spacing.sm }}>
-          <IconButton icon="🤍" onPress={() => {}} />
-          <IconButton icon="🔔" onPress={() => {}} />
+          <IconButton icon="🤍" onPress={() => {}} size={40} />
+          <IconButton icon="🔔" onPress={() => {}} size={40} />
         </View>
       </View>
 
@@ -133,9 +133,9 @@ const styles = StyleSheet.create({
   quickCard: {
     width: "23%",
     borderWidth: 1,
-    borderRadius: radii.md,
-    paddingVertical: spacing.sm,
+    borderRadius: radii.md,   // 16px
+    paddingVertical: spacing.md,  // 16px — taller quick-tool cards
     alignItems: "center",
-    marginBottom: spacing.sm,
+    marginBottom: spacing.sm,     // 8px
   },
 });

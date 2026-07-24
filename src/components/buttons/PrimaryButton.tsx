@@ -1,7 +1,7 @@
 import React from "react";
 import { Pressable, Text, StyleSheet, ActivityIndicator, ViewStyle } from "react-native";
 import { useTheme } from "@/hooks/useTheme";
-import { radii, spacing, typography } from "@/config/theme";
+import { radii, typography } from "@/config/theme";
 
 interface Props {
   label: string;
@@ -25,7 +25,7 @@ export function PrimaryButton({ label, onPress, disabled, loading, variant = "pr
       style={({ pressed }) => [
         styles.base,
         { backgroundColor: bg, opacity: disabled ? 0.5 : pressed ? 0.85 : 1 },
-        variant === "ghost" && { borderWidth: 1, borderColor: theme.primary },
+        variant === "ghost" && { borderWidth: 1.5, borderColor: theme.primary },
         style,
       ]}
     >
@@ -40,13 +40,14 @@ export function PrimaryButton({ label, onPress, disabled, loading, variant = "pr
 
 const styles = StyleSheet.create({
   base: {
-    paddingVertical: spacing.md,
-    paddingHorizontal: spacing.lg,
+    // Headspace: 56px tall pill buttons
+    height: 56,
+    paddingHorizontal: 24,
     borderRadius: radii.pill,
     alignItems: "center",
     justifyContent: "center",
   },
   label: {
-    ...typography.button,
+    ...typography.button, // 17px 700, ls 0.2
   },
 });

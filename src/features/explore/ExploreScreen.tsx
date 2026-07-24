@@ -6,7 +6,7 @@ import { SearchBar } from "@/components/forms/SearchBar";
 import { CategoryChip } from "@/components/cards/CategoryChip";
 import { ContentCard } from "@/components/cards/ContentCard";
 import { useTheme } from "@/hooks/useTheme";
-import { radii, spacing, shadow } from "@/config/theme";
+import { radii, spacing, screenPadding, shadowMd } from "@/config/theme";
 import { BREATHING, FOCUS_TRACKS, MEDITATIONS } from "@/data/mockData";
 import { useNavigation } from "@react-navigation/native";
 
@@ -79,7 +79,7 @@ export function ExploreScreen() {
                     { backgroundColor: selected ? theme.primary : theme.card, borderColor: selected ? theme.primary : theme.border },
                   ]}
                 >
-                  <Text style={{ fontSize: 16 }}>{t.icon}</Text>
+                  <Text style={{ fontSize: 18 }}>{t.icon}</Text>
                   <Text variant="caption" color={selected ? "#FFFFFF" : theme.textPrimary} style={{ marginLeft: 6 }}>
                     {t.label}
                   </Text>
@@ -133,8 +133,20 @@ export function ExploreScreen() {
 const styles = StyleSheet.create({
   typeRow: { flexDirection: "row", flexWrap: "wrap", gap: spacing.sm, marginTop: spacing.md },
   typeChip: {
-    flexDirection: "row", alignItems: "center", borderWidth: 1, borderRadius: radii.pill,
-    paddingVertical: spacing.sm, paddingHorizontal: spacing.md,
+    flexDirection: "row",
+    alignItems: "center",
+    borderWidth: 1,
+    borderRadius: radii.pill,
+    paddingVertical: spacing.sm,       // 8px
+    paddingHorizontal: spacing.md,     // 16px
+    height: 40,                        // consistent chip height
   },
-  featured: { borderRadius: radii.lg, padding: spacing.lg, marginTop: spacing.md, ...shadow },
+  featured: {
+    borderRadius: radii.lg,            // 24px
+    padding: screenPadding.horizontal, // 20px
+    marginTop: spacing.md,
+    minHeight: 120,
+    justifyContent: "center",
+    ...shadowMd,
+  },
 });

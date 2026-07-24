@@ -32,7 +32,7 @@ export function MoodSelector({
             { backgroundColor: value === m.id ? theme.primary : theme.card, borderColor: theme.border },
           ]}
         >
-          <Text style={{ fontSize: 26 }}>{m.icon}</Text>
+          <Text style={{ fontSize: 28 }}>{m.icon}</Text>
           <Text variant="caption" color={value === m.id ? "#FFFFFF" : theme.textSecondary} style={{ marginTop: 2 }}>
             {m.label}
           </Text>
@@ -46,10 +46,10 @@ const styles = StyleSheet.create({
   row: { flexDirection: "row", justifyContent: "space-between" },
   item: {
     flex: 1,
-    marginHorizontal: 3,
-    borderRadius: radii.md,
+    marginHorizontal: 4,           // 4px gap between mood items
+    borderRadius: radii.md,        // 16px
     borderWidth: 1,
-    paddingVertical: spacing.sm,
+    paddingVertical: spacing.md,   // 16px — taller touch target
     alignItems: "center",
   },
 });

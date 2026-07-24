@@ -3,7 +3,7 @@ import { Pressable, View, StyleSheet } from "react-native";
 import { Text } from "@/components/typography/Text";
 import { IconButton } from "@/components/buttons/IconButton";
 import { useTheme } from "@/hooks/useTheme";
-import { radii, spacing, shadow } from "@/config/theme";
+import { radii, spacing, screenPadding, shadowMd } from "@/config/theme";
 import { formatDuration } from "@/utils/format";
 import { ContentItem } from "@/types";
 
@@ -21,7 +21,7 @@ export function ContentCard({ item, onPress, onFavourite, favourited }: Props) {
       onPress={onPress}
       style={({ pressed }) => [
         styles.card,
-        { backgroundColor: theme.card, borderColor: theme.border, opacity: pressed ? 0.9 : 1 },
+        { backgroundColor: theme.surface, borderColor: theme.border, opacity: pressed ? 0.92 : 1 },
       ]}
     >
       <View style={[styles.cover, { backgroundColor: item.coverColor }]} />
@@ -56,15 +56,20 @@ export function ContentCard({ item, onPress, onFavourite, favourited }: Props) {
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: radii.md,
+    borderRadius: radii.md,      // 16px
     borderWidth: 1,
-    marginBottom: spacing.md,
+    marginBottom: spacing.md,    // 16px gap between cards
     overflow: "hidden",
-    ...shadow,
+    ...shadowMd,
   },
-  cover: { height: 96, width: "100%" },
-  body: { padding: spacing.md },
+  cover: { height: 120, width: "100%" },   // Headspace card image height
+  body: { padding: screenPadding.horizontal },  // 20px inner padding
   headerRow: { flexDirection: "row", alignItems: "center" },
-  metaRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: spacing.sm },
-  badge: { paddingHorizontal: spacing.sm, paddingVertical: 2, borderRadius: radii.pill },
+  metaRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: spacing.sm,        // 8px
+  },
+  badge: { paddingHorizontal: spacing.sm, paddingVertical: 3, borderRadius: radii.pill },
 });

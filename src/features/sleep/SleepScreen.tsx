@@ -4,7 +4,7 @@ import { Screen } from "@/components/layout/Screen";
 import { Text } from "@/components/typography/Text";
 import { PrimaryButton } from "@/components/buttons/PrimaryButton";
 import { useTheme } from "@/hooks/useTheme";
-import { radii, spacing } from "@/config/theme";
+import { radii, spacing, screenPadding, shadowMd } from "@/config/theme";
 import { formatDuration } from "@/utils/format";
 import { SLEEP_STORIES } from "@/data/mockData";
 import { useSettingsStore } from "@/store/settings.store";
@@ -78,9 +78,23 @@ export function SleepScreen() {
 }
 
 const styles = StyleSheet.create({
-  tonightCard: { borderWidth: 1, borderRadius: radii.lg, padding: spacing.lg, marginTop: spacing.lg },
-  storyRow: { flexDirection: "row", alignItems: "center", borderWidth: 1, borderRadius: radii.md, padding: spacing.sm, marginBottom: spacing.sm },
-  cover: { width: 56, height: 56, borderRadius: radii.sm },
+  tonightCard: {
+    borderWidth: 1,
+    borderRadius: radii.lg,            // 24px
+    padding: screenPadding.horizontal, // 20px
+    marginTop: spacing.lg,
+    minHeight: 160,
+    ...shadowMd,
+  },
+  storyRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderWidth: 1,
+    borderRadius: radii.md,   // 16px
+    padding: spacing.md,      // 16px inner
+    marginBottom: spacing.sm, // 8px gap
+  },
+  cover: { width: 60, height: 60, borderRadius: radii.sm },  // 60px — Headspace sleep story thumb
   mixerCard: { borderWidth: 1, borderRadius: radii.md, padding: spacing.md },
   mixerRow: { flexDirection: "row", justifyContent: "space-between", marginBottom: spacing.xs },
 });
