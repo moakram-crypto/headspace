@@ -1,9 +1,7 @@
 import React from "react";
-import { Alert, Pressable, View, StyleSheet, Platform } from "react-native";
-import { Screen } from "@/components/layout/Screen";
+import { Alert, Pressable, ScrollView, StyleSheet, Platform, View } from "react-native";
 import { Text } from "@/components/typography/Text";
-import { useTheme } from "@/hooks/useTheme";
-import { radii, spacing } from "@/config/theme";
+import { OnboardingLayout, ORANGE } from "@/components/layout/OnboardingLayout";
 import { useUserStore } from "@/store/user.store";
 import { requestNotificationPermission } from "@/services/notifications.service";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
@@ -12,15 +10,14 @@ import type { OnboardingStackParamList } from "@/navigation/types";
 type Props = NativeStackScreenProps<OnboardingStackParamList, "PreferredTime">;
 
 const OPTIONS: { id: NonNullable<ReturnType<typeof useUserStore.getState>["preferredTime"]>; label: string }[] = [
-  { id: "morning", label: "Morning" },
-  { id: "afternoon", label: "Afternoon" },
-  { id: "evening", label: "Evening" },
+  { id: "morning",      label: "Morning" },
+  { id: "afternoon",    label: "Afternoon" },
+  { id: "evening",      label: "Evening" },
   { id: "before_sleep", label: "Before sleep" },
-  { id: "varies", label: "Different times each day" },
+  { id: "varies",       label: "Different times each day" },
 ];
 
 export function PreferredTimeScreen({ navigation }: Props) {
-  const theme = useTheme();
   const { preferredTime, setPreferredTime } = useUserStore();
 
   const choose = async (id: (typeof OPTIONS)[number]["id"]) => {
@@ -35,26 +32,50 @@ export function PreferredTimeScreen({ navigation }: Props) {
   };
 
   return (
-    <Screen>
-      <Text variant="h1">When would you like to practice?</Text>
-      <View style={{ marginTop: spacing.lg, gap: spacing.sm }}>
-        {OPTIONS.map((o) => (
-          <Pressable
-            key={o.id}
-            onPress={() => choose(o.id)}
-            style={[
-              styles.card,
-              { backgroundColor: preferredTime === o.id ? theme.primary : theme.card, borderColor: theme.border },
-            ]}
-          >
-            <Text color={preferredTime === o.id ? "#FFFFFF" : theme.textPrimary}>{o.label}</Text>
-          </Pressable>
-        ))}
-      </View>
-    </Screen>
+    <OnboardingLayout>
+      <Text style={styles.title}>When would you like to practice?</Text>
+      <Text style={styles.subtitle}>We'll remind you at your preferred time</Text>
+
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.list}>
+        {OPTIONS.map((o) => {
+          const selected = preferredTime === o.id;
+          return (
+            <Pressable
+              key={o.id}
+              onPress={() => choose(o.id)}
+              style={({ pressed }) => [
+                styles.row,
+                selected && styles.rowSelected,
+                { opacity: pressed ? 0.85 : 1 },
+              ]}
+            >
+              <Text style={[styles.rowText, selected && styles.rowTextSelected]}>{o.label}</Text>
+              <View style={[styles.indicator, selected && styles.indicatorOn]}>
+                {selected && <View style={styles.indicatorDot} />}
+              </View>
+            </Pressable>
+          );
+        })}
+      </ScrollView>
+    </OnboardingLayout>
   );
 }
 
 const styles = StyleSheet.create({
-  card: { borderWidth: 1, borderRadius: radii.md, padding: spacing.md },
+  title:    { fontSize: 26, fontWeight: "700", color: "#1F2024", textAlign: "center", letterSpacing: -0.3, lineHeight: 34 },
+  subtitle: { fontSize: 16, color: "#8F9098", textAlign: "center", marginTop: 6 },
+  list:     { paddingTop: 24, paddingBottom: 16 },
+
+  row: {
+    flexDirection: "row", alignItems: "center", justifyContent: "space-between",
+    backgroundColor: "#FFFFFF", borderWidth: 1.5, borderColor: "#E8E8E8",
+    borderRadius: 999, height: 62, paddingHorizontal: 22, marginBottom: 10,
+  },
+  rowSelected:     { borderColor: ORANGE, backgroundColor: "#FFF6EE" },
+  rowText:         { fontSize: 17, fontWeight: "500", color: "#1F2024" },
+  rowTextSelected: { color: ORANGE, fontWeight: "600" },
+
+  indicator:    { width: 26, height: 26, borderRadius: 13, borderWidth: 1.5, borderColor: "#D1D1D6", backgroundColor: "#F2F2F7", alignItems: "center", justifyContent: "center" },
+  indicatorOn:  { borderColor: ORANGE, backgroundColor: ORANGE },
+  indicatorDot: { width: 10, height: 10, borderRadius: 5, backgroundColor: "#FFFFFF" },
 });
