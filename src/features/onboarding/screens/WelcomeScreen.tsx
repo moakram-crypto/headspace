@@ -242,7 +242,7 @@ const styles = StyleSheet.create({
   /* ── Text ── */
   title: {
     fontSize: 28,
-    fontWeight: "800",
+    fontWeight: "600",
     color: "#1F2024",
     textAlign: "center",
     letterSpacing: -0.5,
